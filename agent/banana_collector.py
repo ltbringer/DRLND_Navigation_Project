@@ -3,7 +3,7 @@ import random
 import torch
 import torch.nn.functional as F
 import torch.optim as optim
-from q_network.q_network import q_network
+from q_network.q_network import build_q_net
 from q_network.memory import ReplayBuffer
 from utils.cli import defaults
 
@@ -53,13 +53,13 @@ class Agent():
 
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-        self.qnetwork_local = q_network(state_size, action_size, fc1_units=fc1_units, fc2_units=fc1_units)\
+        self.q_network = build_q_net(state_size, action_size, fc1_units=fc1_units, fc2_units=fc1_units)\
             .to(self.device)
 
-        self.qnetwork_target = q_network(state_size, action_size, fc1_units=fc1_units, fc2_units=fc2_units).\
+        self.target_network = build_q_net(state_size, action_size, fc1_units=fc1_units, fc2_units=fc2_units).\
             to(self.device)
 
-        self.optimizer = optim.Adam(self.qnetwork_local.parameters(), lr=lr)
+        self.optimizer = optim.Adam(self.q_network.parameters(), lr=lr)
         self.memory = ReplayBuffer(action_size, buffer_size, batch_size, seed)
         self.t_step = 0
         self.fc1_units = fc1_units
@@ -71,7 +71,7 @@ class Agent():
         self.tau = tau
 
     def load_saved_model(self, model_path):
-        self.qnetwork_local = q_network(
+        self.q_network = build_q_net(
             self.state_size,
             self.action_size,
             fc1_units=self.fc1_units,
@@ -79,7 +79,7 @@ class Agent():
         ).to(self.device)
 
         model_state_dict = torch.load(model_path)
-        self.qnetwork_local.load_state_dict(model_state_dict)
+        self.q_network.load_state_dict(model_state_dict)
 
     def step(self, state, action, reward, next_state, done):
         """
@@ -122,10 +122,10 @@ class Agent():
         :return: int
         """
         state = torch.from_numpy(state).float().unsqueeze(0).to(self.device)
-        self.qnetwork_local.eval()
+        self.q_network.eval()
         with torch.no_grad():
-            action_values = self.qnetwork_local(state)
-        self.qnetwork_local.train()
+            action_values = self.q_network(state)
+        self.q_network.train()
         if random.random() > eps:
             return np.argmax(action_values.cpu().data.numpy())
         else:
@@ -143,15 +143,15 @@ class Agent():
         """
         states, actions, rewards, next_states, dones = experiences
 
-        Q_targets_next = self.qnetwork_target(next_states).detach().max(1)[0].unsqueeze(1)
+        Q_targets_next = self.target_network(next_states).detach().max(1)[0].unsqueeze(1)
         Q_targets = rewards + (gamma * Q_targets_next * (1 - dones))
-        Q_expected = self.qnetwork_local(states).gather(1, actions)
+        Q_expected = self.q_network(states).gather(1, actions)
 
         loss = F.mse_loss(Q_expected, Q_targets)
         self.optimizer.zero_grad()
         loss.backward()
         self.optimizer.step()
-        self.soft_update(self.qnetwork_local, self.qnetwork_target)
+        self.soft_update(self.q_network, self.target_network)
 
     def soft_update(self, local_model, target_model):
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):

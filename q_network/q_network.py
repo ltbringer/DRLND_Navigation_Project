@@ -5,7 +5,7 @@ from collections import OrderedDict
 from utils.cli import defaults
 
 
-def q_network(state_size, action_size, fc1_units=defaults.FC1_UNITS, fc2_units=defaults.FC2_UNITS):
+def build_q_net(state_size, action_size, fc1_units=defaults.FC1_UNITS, fc2_units=defaults.FC2_UNITS):
     """
     The Neural network that optimizes the Q values for the navigation project.
     starting with the input layer having `state_size` number of neurons
