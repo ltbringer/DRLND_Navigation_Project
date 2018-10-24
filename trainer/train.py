@@ -63,6 +63,6 @@ def dqn(
         if np.mean(scores_window) >= qualify_score:
             print('\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}'.format(i_episode - 100,
                                                                                          np.mean(scores_window)))
-            torch.save(agent.qnetwork_local.state_dict(), 'checkpoint_{}.pth'.format(get_current_timestamp()))
+            torch.save(agent.q_network.state_dict(), 'checkpoint_{}.pth'.format(get_current_timestamp()))
             break
     return scores
