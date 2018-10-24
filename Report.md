@@ -37,3 +37,5 @@ To train an agent to collect yellow bananas while strictly avoiding blue bananas
 frantically moves back and forth in an attempt to prevent collision with the blue bananas.
 This can be solved by increasing the memory buffer or allowing for adaptive epsilon.
 
+![banana_agent_rewards](https://github.com/AmreshVenugopal/DRLND_Navigation_Project/blob/master/banana_agent_fails.gif?raw=true?raw=true "Agent scores")
+
