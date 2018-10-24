@@ -1,7 +1,7 @@
 # Learning Algorithm
 
 ## Objective
-~[banana_env_gif](banana.gif?raw=true "Banana environment")
+~[https://github.com/AmreshVenugopal/DRLND_Navigation_Project/blob/master/DRLND_agent_scores.png?raw=true](banana.gif?raw=true "Banana environment")
 To train an agent to collect yellow bananas while strictly avoiding blue bananas.
 
 ## Implementation

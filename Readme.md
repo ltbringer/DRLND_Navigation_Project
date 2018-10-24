@@ -1,7 +1,11 @@
 # DRLND Navigation Project
 
 ## Install
-1. Unzip the environment for your machine from the `environment_builds` directory.
+1. Unzip the environment for your machine:
+    Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux.zip)
+    Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana.app.zip)
+    Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86.zip)
+    Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip)
 2. Create a virtual environment:
     - `virtualenv -p /usr/bin/python<version> <project>`
     - `conda create -n <project> python=<version>`
@@ -9,7 +13,7 @@
 
 ## Objective
 
-~[banana_env_gif](banana.gif?raw=true "Banana environment")
+~[banana_env_gif](https://github.com/AmreshVenugopal/DRLND_Navigation_Project/blob/master/banana.gif?raw=true?raw=true "Banana environment")
 
 To train an agent to collect yellow bananas while strictly avoiding blue bananas.
 
