@@ -1,7 +1,7 @@
 # Learning Algorithm
 
 ## Objective
-![banana_env_gif](https://github.com/AmreshVenugopal/DRLND_Navigation_Project/blob/master/trained_banana_collector.gif?raw=true?raw=true "Banana environment")
+![banana_env_gif](https://github.com/AmreshVenugopal/DRLND_Navigation_Project/blob/master/trained_banana_collector.gif?raw=true?raw=true "Banana environment solved")
 
 A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana. Thus, the goal of your agent is to collect as many yellow bananas as possible while avoiding blue bananas.
 
