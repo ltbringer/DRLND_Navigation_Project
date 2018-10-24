@@ -13,7 +13,7 @@
 
 ## Objective
 
-~[banana_env_gif](https://github.com/AmreshVenugopal/DRLND_Navigation_Project/blob/master/banana.gif?raw=true?raw=true "Banana environment")
+![banana_env_gif](https://github.com/AmreshVenugopal/DRLND_Navigation_Project/blob/master/banana.gif?raw=true?raw=true "Banana environment")
 
 To train an agent to collect yellow bananas while strictly avoiding blue bananas.
 
