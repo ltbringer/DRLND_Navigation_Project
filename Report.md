@@ -28,6 +28,19 @@ To train an agent to collect yellow bananas while strictly avoiding blue bananas
     This helps re-using the experiences as the agent gets trained, also prevents reinforcement of same actions
     which may happen if there is little variation in the next state for a given action.
 
+## Hyperparameters
+- BUFFER_SIZE   = int(1e5)  : The number of samples to be saved in the memory buffer
+- BATCH_SIZE    = 64        : Training the Q network with samples in a batch of 64
+- GAMMA         = 0.99      : Discount factor while considering future rewards
+- TAU           = 1e-3      : Impact of target network over the main network
+- LEARNING_RATE = 5e-4      : The learning rate
+- EPSILON_START = 1.0       : For epsilon greedy
+- EPSILON_DECAY = 0.995     : For epsilon greedy
+- EPSILON_END   = 0.01      : For epsilon greedy
+- UPDATE_EVERY  = 4         : The frequency of time-step in which the Q-network must be updated
+```
+
+
 # Plot of Rewards
 ![banana_agent_rewards](https://github.com/AmreshVenugopal/DRLND_Navigation_Project/blob/master/DRLND_agent_scores.png?raw=true?raw=true "Agent scores")
 
