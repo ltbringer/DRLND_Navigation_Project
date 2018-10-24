@@ -38,7 +38,7 @@ To train an agent to collect yellow bananas while strictly avoiding blue bananas
 - EPSILON_DECAY = 0.995     : For epsilon greedy
 - EPSILON_END   = 0.01      : For epsilon greedy
 - UPDATE_EVERY  = 4         : The frequency of time-step in which the Q-network must be updated
-```
+
 
 
 # Plot of Rewards
