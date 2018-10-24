@@ -29,15 +29,15 @@ To train an agent to collect yellow bananas while strictly avoiding blue bananas
     which may happen if there is little variation in the next state for a given action.
 
 ## Hyperparameters
-- BUFFER_SIZE   = int(1e5)  : The number of samples to be saved in the memory buffer
-- BATCH_SIZE    = 64        : Training the Q network with samples in a batch of 64
-- GAMMA         = 0.99      : Discount factor while considering future rewards
-- TAU           = 1e-3      : Impact of target network over the main network
-- LEARNING_RATE = 5e-4      : The learning rate
-- EPSILON_START = 1.0       : For epsilon greedy
-- EPSILON_DECAY = 0.995     : For epsilon greedy
-- EPSILON_END   = 0.01      : For epsilon greedy
-- UPDATE_EVERY  = 4         : The frequency of time-step in which the Q-network must be updated
+- **BUFFER_SIZE   = 10000**     : The number of samples to be saved in the memory buffer
+- **BATCH_SIZE    = 64**        : Training the Q network with samples in a batch of 64
+- **GAMMA         = 0.99**      : Discount factor while considering future rewards
+- **TAU           = 1e-3**      : Impact of target network over the main network
+- **LEARNING_RATE = 5e-4**      : The learning rate
+- **EPSILON_START = 1.0**       : For epsilon greedy
+- **EPSILON_DECAY = 0.995**     : For epsilon greedy
+- **EPSILON_END   = 0.01**      : For epsilon greedy
+- **UPDATE_EVERY  = 4**         : The frequency of time-step in which the Q-network must be updated
 
 
 
@@ -52,3 +52,4 @@ This can be solved by increasing the memory buffer or allowing for adaptive epsi
 
 ![banana_agent_rewards](https://github.com/AmreshVenugopal/DRLND_Navigation_Project/blob/master/banana_agent_fails.gif?raw=true?raw=true "Agent scores")
 
+[Back to Readme](https://github.com/AmreshVenugopal/DRLND_Navigation_Project/blob/master/Readme.md)
