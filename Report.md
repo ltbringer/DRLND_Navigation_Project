@@ -1,7 +1,8 @@
 # Learning Algorithm
 
 ## Objective
-![https://github.com/AmreshVenugopal/DRLND_Navigation_Project/blob/master/DRLND_agent_scores.png?raw=true](banana.gif?raw=true "Banana environment")
+![banana_env_gif](https://github.com/AmreshVenugopal/DRLND_Navigation_Project/blob/master/banana.gif?raw=true?raw=true "Banana environment")
+
 To train an agent to collect yellow bananas while strictly avoiding blue bananas.
 
 ## Implementation
@@ -28,7 +29,7 @@ To train an agent to collect yellow bananas while strictly avoiding blue bananas
     which may happen if there is little variation in the next state for a given action.
 
 # Plot of Rewards
-~[banana_agent_rewards](DRLND_agent_scores.png?raw=true "Agent scores")
+![banana_agent_rewards](https://github.com/AmreshVenugopal/DRLND_Navigation_Project/blob/master/DRLND_agent_scores.png?raw=true?raw=true "Agent scores")
 
 
 # Ideas for future work
