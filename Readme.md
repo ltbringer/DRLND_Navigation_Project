@@ -106,3 +106,6 @@ optional arguments:
   --seed SEED           Random seed to ensure same results
 
 ```
+
+## Report
+The experiment conducted has a detailed report [here](https://github.com/AmreshVenugopal/DRLND_Navigation_Project/blob/master/Report.md)
