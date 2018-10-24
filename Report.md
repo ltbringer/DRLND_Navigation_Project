@@ -25,8 +25,10 @@ To train an agent to collect yellow bananas while strictly avoiding blue bananas
     ```
 - Experience Replay: is implemented by providing the agent with a memory
     to hold `buffer_size` number of samples from which a random sample can be used for learning.
-    This helps re-using the experiences as the agent gets trained, also prevents reinforcement of same actions
-    which may happen if there is little variation in the next state for a given action.
+    This helps re-using the experiences as the agent gets trained, also prevents reinforcement of a
+    certain kind/kinds of actions due to consecutive tuples containing same/similar experience.
+
+-
 
 ## Hyperparameters
 - **BUFFER_SIZE   = 10000**     : The number of samples to be saved in the memory buffer
