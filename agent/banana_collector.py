@@ -134,8 +134,8 @@ class Agent():
     def learn(self, experiences, gamma):
         """
         - Experiences are the samples from the memory buffer to implement experience replay
-        - The target network tries to predict the maximum future reward
-        - The local network tries to predict the current Q value
+        - The target network tries to predict the TD target
+        - The q network tries to predict the current Q value
         :param experiences: list
         :param gamma: float
         discount factor
@@ -153,6 +153,32 @@ class Agent():
         self.optimizer.step()
         self.soft_update(self.q_network, self.target_network)
 
-    def soft_update(self, local_model, target_model):
-        for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
-            target_param.data.copy_(self.tau * local_param.data + (1 - self.tau) * target_param.data)
+    def soft_update(self, q_network_model, target_model):
+        """
+        Fixed target implementation
+
+        ∆w = α[(R + γmaxQ(s',a,w)) - Q(s,a,w)]∇Q(s,a,w)
+        The target and the Q value are using the same approximation function
+        (weights of the network) hence, updating the weights in the q_network and
+        estimating the error between itself and the target_network would be inaccurate
+        as both keep diverging away, unless one of them stays relatively stable it would
+        be difficult to reduce the loss or ∆w, also known as the moving target problem, as
+        the target and the parameters to be changed are coupled.
+
+        Here, to counter the moving target problem, small updates are made to the weights of the
+        target network by introducing a hyperparameter tau.
+
+        Imagine tau to be a very small number, then the effect of multiplying tau with the
+        q_network's weights will reduce the degree of change that will be brought upon in the
+        target_network's weights, also (1 - tau) will be a larger number, retaining majority of the
+        target networks previous weights.
+
+        This causes the target network to update much slower than the q_network solving
+        the moving target problem.
+
+        :param q_network_model:
+        :param target_model:
+        :return:
+        """
+        for target_param, q_network_param in zip(target_model.parameters(), q_network_model.parameters()):
+            target_param.data.copy_(self.tau * q_network_param.data + (1 - self.tau) * target_param.data)

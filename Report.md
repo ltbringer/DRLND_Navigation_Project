@@ -28,7 +28,25 @@ To train an agent to collect yellow bananas while strictly avoiding blue bananas
     This helps re-using the experiences as the agent gets trained, also prevents reinforcement of a
     certain kind/kinds of actions due to consecutive tuples containing same/similar experience.
 
--
+- Fixed target implementation
+    ∆w = α[(R + γmaxQ(s',a,w)) - Q(s,a,w)]∇Q(s,a,w)
+    The target and the Q value are using the same approximation function 
+    (weights of the network) hence, updating the weights in the q_network and 
+    estimating the error between itself and the target_network would be inaccurate 
+    as both keep diverging away, unless one of them stays relatively stable it would 
+    be difficult to reduce the loss or ∆w, also known as the moving target problem, as 
+    the target and the parameters to be changed are coupled.
+
+    Here, to counter the moving target problem, small updates are made to the weights of the 
+    target network by introducing a hyperparameter tau. 
+    
+    Imagine tau to be a very small number, then the effect of multiplying tau with the 
+    q_network's weights will reduce the degree of change that will be brought upon in the 
+    target_network's weights, also (1 - tau) will be a larger number, retaining majority of the
+    target networks previous weights.
+    
+    This causes the target network to update much slower than the q_network solving 
+    the moving target problem.
 
 ## Hyperparameters
 - **BUFFER_SIZE   = 10000**     : The number of samples to be saved in the memory buffer
