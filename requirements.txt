@@ -70,7 +70,7 @@ requests==2.20.0
 scipy==1.1.0
 seaborn==0.9.0
 Send2Trash==1.5.0
-setuptools==40.2.0
+setuptools==65.5.1
 simplegeneric==0.8.1
 six==1.11.0
 tensorboard==1.7.0
